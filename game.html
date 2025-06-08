@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swimming Pool Game</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <h1>CLICK AND COLLECT!</h1>
+
+<!-- Button to open game documentation in a new tab -->
+  <a href="documentation.pdf" target="_blank">
+    <button id="docButton">View Documentation</button>
+  </a>
+  <!-- Game instructions section -->
+  <div id="instructions">
+    <h3> INSTRUCTIONS:</h3>
+    <ul>
+      <li><strong>Movement:</strong> Use Arrow Keys or WASD to swim around</li>
+      <li><strong>Collect:</strong> Press SPACE when near a toy to collect it</li>
+      <li><strong>Goal:</strong> Collect as many toys as possible before time runs out!</li>
+      <li><strong>Toy Lifecycle:</strong> Toys appear at top, move to random position, stay for 5s, then shrink and fade for 5s</li>
+    </ul>
+  </div>
+<!-- Dropdown to select game duration -->
+  <div id="timeSettings">
+    <label for="gameDuration">Game Duration:</label>
+    <select id="gameDuration">
+      <option value="60">1 Minute</option>
+      <option value="120">2 Minutes</option>
+    </select>
+  </div>
+ <!-- Canvas -->
+  <canvas id="canvasgame" width="800" height="410"></canvas>
+<!-- Game control buttons -->
+  <div id="controls">
+    <button id="startButton" onclick="startGame()">Start Game</button>
+    <button id="restartButton" class="hidden" onclick="startGame()">Restart Game</button>
+  </div>
+  <!-- score and time display -->
+  <div id="gameInfo">
+    <div class="info-item">
+      <div>Score: <span id="scoreDisplay">0</span></div>
+    </div>
+    <div class="info-item">
+      <div>Time: <span id="timeDisplay">60</span>s</div>
+    </div>
+  </div>
+  <!-- Game over message and restart button -->
+  <div id="gameOverMessage">
+    <h2> Game Over!</h2>
+    <p id="finalScore">Your final score: 0</p>
+    <button onclick="closeGameOver()">Play Again</button>
+  </div>
+ <!-- Volume control  -->
+  <div id="volumeControl">
+  <label for="volumeSlider">Volume:</label>
+  <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+</div>
+
+
+  <!-- Audio Elements -->
+  <audio id="startSound" preload="auto">
+    <source src="assets/sounds/start.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="endSound" preload="auto">
+    <source src="assets/sounds/end.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="successSound" preload="auto">
+    <source src="assets/sounds/success.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="failSound" preload="auto">
+    <source src="assets/sounds/fail.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="game.js"></script>
+</body>
+</html>
